@@ -1,4 +1,14 @@
+#----------------------------------------------------------------------#  
+# This script contains all the basic functions which are neccessary for
+# performing SCL prediction in addition to BCMRFs functions
+# Author : Lu Zhu
+# Email : lzhu@techfak.uni-bielefel.de
+#----------------------------------------------------------------------#  
+
+#---------------------------------------------------------#  
 # basic functions
+#---------------------------------------------------------#  
+
 adjacentMatrixFile = function(file){
   adjMatrix= as.matrix(read.csv(file,sep=";",row.names=1))
   return(adjMatrix) 

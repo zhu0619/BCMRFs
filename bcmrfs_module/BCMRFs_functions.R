@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------#  
+# This script contains the BCMRFs functions
+# Author : Lu Zhu
+# Email : lzhu@techfak.uni-bielefel.de
+#----------------------------------------------------------------------#  
+
 BCMRFs_single_imbalance = function( wA, L, Lname, titer, unknowns, knowns)
 {
   #---------------------------------------------------------#

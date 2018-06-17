@@ -10,7 +10,7 @@
 #---------------------------------------------------------#  
 # Load dependencies
 #---------------------------------------------------------#
-pkg_to_require = c("httr","jsonlite")
+pkg_to_require = c("httr","jsonlite","igraph")
 pkg_to_install = setdiff(pkg_to_require, rownames(installed.packages()))
 # install packages
 if (length(pkg_to_install) > 0) {
@@ -26,13 +26,28 @@ for(pkg_name in pkg_to_require){
   require(pkg_name,character.only = TRUE)
 }
 
+
 #---------------------------------------------------------#  
-# Input: list of protein (UniProt ID)
-# Output: physical protein interaction networks 
-# Reliablity score: 0.2 (by default) (Optinal)
+
 #---------------------------------------------------------#
+HOME_mentha = "http://mentha.uniroma2.it:8080/server/"
 
 
+github_api <- function(prots) {
+  url <- modify_url(paste0(HOME_mentha,'getInteractions?org=9096&ids=',prots))
+  print(url)
+  GET(url)
+}
 
+mentha_ppi= function(prot_list_file){
+  prots = readChar(prot_list_file,file.info(prot_list_file)$size)
+  resp <- github_api(prots)
+  phy_ppi_acc <- read.csv(text=content(resp),sep=';',header=F)
+  phy_ppi <- graph.data.frame(phy_ppi_acc, directed=FALSE)
+  return(phy_ppi)
+}
 
+# prot_list_file <- "prots.txt"  # test protein file
+# 
+# mentha_ppi(prot_list_file)
 

@@ -4,7 +4,7 @@
 # Email : lzhu@techfak.uni-bielefel.de
 #----------------------------------------------------------------------#  
 
-BCMRFs_single_imbalance = function( wA, L, Lname, titer, unknowns, knowns)
+BCMRFs_single_imbalance = function( wA, L, Lname, titer, unknowns, knowns, pcut)
 {
   #---------------------------------------------------------#
   # INPUT:
@@ -249,7 +249,7 @@ BCMRFs_single_imbalance = function( wA, L, Lname, titer, unknowns, knowns)
 }
 
 
-BCMRFs_adj_imbalance = function(wA, L, Adjs,Lname, titer,L_all ,unknowns,knowns)
+BCMRFs_adj_imbalance = function(wA, L, Adjs,Lname, titer,L_all ,unknowns,knowns, pcut)
 {
   #---------------------------------------------------------#
   # INPUT:
@@ -531,7 +531,7 @@ BCMRFs_adj_imbalance = function(wA, L, Adjs,Lname, titer,L_all ,unknowns,knowns)
 
 
 
-BMRF_adj_feature_imbalance = function(wA, L, Adjs,Lname,titer,feature,L_all,unknowns,knowns)
+BMRF_adj_feature_imbalance = function(wA, L, Adjs, Lname, titer, feature, L_all, unknowns, knowns, pcut)
 {
   #---------------------------------------------------------#
   # INPUT:
@@ -731,6 +731,8 @@ BMRF_adj_feature_imbalance = function(wA, L, Adjs,Lname,titer,feature,L_all,unkn
       
       MRFparamsP = as.vector(MRFparams + (gamma*(Z[s[1],] - Z[s[2],])) + e);
       
+      # print(wA)
+      # print(L)
       K1 = as.vector (wA %*% L);
       NS = as.vector(rowSums(wA));
       K0 = NS - K1;

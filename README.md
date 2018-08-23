@@ -12,5 +12,5 @@ Zhu,L. and Ester,M. (2017) Bayesian Collective Markov Random Fields for Subcellu
 
 BCMRFs_module folder includes the source codes of BCMRFs
 
-Examples
+## BCMRFs for tissue-specific SCL prediction
 An example of generic SCL prediction and an example of tissue-specific SCL prediction can be found in R script 'test.R'
